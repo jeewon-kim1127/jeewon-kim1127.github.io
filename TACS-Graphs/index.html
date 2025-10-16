@@ -1,201 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="utf-8" />
-  <meta name="description" content="TACS-Graphs: Traversability-aware Consistent Scene Graphs for Ground Robot Localization and Mapping" />
+  <meta charset="utf-8">
+  <meta name="description"
+        content="TACS-Graphs: Traversability-aware Consistent Scene Graphs for Ground Robot Localization and Mapping">
   <meta name="keywords" content="TACS-Graphs, Scene Graph, Robotics, Localization, Mapping, IROS 2025" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TACS-Graphs: Traversability-aware Consistent Scene Graphs for Ground Robot Localization and Mapping</title>
 
-  <!-- Google Analytics -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
     gtag('js', new Date());
+
     gtag('config', 'G-PYVRSFMDRL');
   </script>
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,700|Castoro:400,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
 
-  <!-- Bulma + Icons -->
-  <link rel="stylesheet" href="./static/css/bulma.min.css" />
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css" />
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css" />
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-  <link rel="icon" href="./static/images/cam_no_bg_w.png" />
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
 
-  <!-- Custom -->
-  <link rel="stylesheet" href="./static/css/index.css" />
-
-  <!-- jQuery & Scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-
-  <style>
-    :root{
-      --gap: 1.25rem;
-      --line: #e5e7eb;
-      --muted: #6b7280;
-    }
-    body{ font-family: "Noto Sans", Arial, sans-serif; }
-    .navbar { border-bottom: 1px solid var(--line); }
-    .navbar .navbar-item, .navbar .navbar-link { font-weight: 500; }
-    .hero { padding-top: 2rem; padding-bottom: 1rem; }
-    .publication-title { line-height: 1.25; }
-    .subtitle-tag { color: var(--muted); }
-    .author-block a { text-decoration: none; }
-    .author-block + .author-block { margin-left: .35rem; }
-    .affils .author-block + .author-block { margin-left: .75rem; }
-    .link-block + .link-block { margin-left: .5rem; }
-    .publication-links .button { min-width: 120px; }
-    .publication-video iframe{
-      width: 100%;
-      height: auto;
-      aspect-ratio: 16/9;
-      border-radius: 8px;
-      border: 1px solid var(--line);
-    }
-    .section { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-    .content img{ max-width: 100%; height: auto; }
-    pre code{ white-space: pre; }
-    footer.footer{ border-top:1px solid var(--line); }
-    /* center the left home icon properly */
-    .navbar-start { flex-grow:1; justify-content:center; }
-  </style>
+  <script src="./static/js/index.js"></script>
 </head>
 <body>
-
-<!-- Navbar -->
+<!-- 
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="container">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="#">
-        <span class="icon"><i class="fas fa-project-diagram"></i></span>
-        <span style="margin-left:.5rem;font-weight:700;">TACS-Graphs</span>
-      </a>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navMenu" class="navbar-menu">
-      <div class="navbar-start">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
         <a class="navbar-item" href="https://github.com/jeewon-kim1127/jeewon-kim1127">
-          <span class="icon"><i class="fas fa-home"></i></span>&nbsp;Home
-        </a>
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
 
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">Related Research</a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="https://github.com/snt-arg/s_graphs_docker" target="_blank" rel="noopener">Baseline: S-Graphs+</a>
-            <a class="navbar-item" href="https://arxiv.org/abs/2411.17134" target="_blank" rel="noopener">Traversability: TRIP</a>
-          </div>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://hypernerf.github.io">
+            HyperNeRF
+          </a>
+          <a class="navbar-item" href="https://nerfies.github.io">
+            Nerfies
+          </a>
+          <a class="navbar-item" href="https://latentfusion.github.io">
+            LatentFusion
+          </a>
+          <a class="navbar-item" href="https://photoshape.github.io">
+            PhotoShape
+          </a>
         </div>
       </div>
     </div>
-  </div>
-</nav>
 
-<!-- HERO -->
+  </div>
+</nav> -->
+
+
 <section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-
-          <h1 class="title is-2 publication-title">
-            TACS-Graphs: Traversability-aware Consistent Scene Graphs for Ground Robot Localization and Mapping
+          <h1 class="title is-1 publication-title">TACS-Graphs: Traversability-aware Consistent Scene Graphs for Ground Robot Localization and Mapping
           </h1>
-          <p class="subtitle is-4 subtitle-tag">IROS 2025</p>
-
-          <div class="is-size-5 publication-authors" style="margin-top:.5rem;">
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="https://github.com/jeewon-kim1127" target="_blank" rel="noopener">Jeewon Kim</a><sup>1,*</sup>,
-            </span>
+              <a href="https://github.com/jeewon-kim1127" target="_blank" rel="noopener">Jeewon Kim</a><sup>1,*</sup>,</span>
             <span class="author-block">
-              <a href="https://scholar.google.com/citations?user=z9NkqOMAAAAJ&hl=en" target="_blank" rel="noopener">Minho Oh</a><sup>1,2</sup>,
+              <a href="https://scholar.google.com/citations?user=z9NkqOMAAAAJ&hl=en" target="_blank" rel="noopener">Minho Oh</a><sup>1,2</sup>,</span>
             </span>
             <span class="author-block">
               <a href="https://urobot.kaist.ac.kr/url_teams/prof-hyunmyung/" target="_blank" rel="noopener">Hyun Myung</a><sup>1</sup>
             </span>
           </div>
 
-          <div class="is-size-6 has-text-centered" style="margin-top:.25rem;">
-            <sup>*</sup> equal contribution
-          </div>
-
-          <div class="is-size-6 affils has-text-centered" style="margin-top:.5rem;">
-            <span class="author-block"><sup>1</sup>URL KAIST</span>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Urban Robotics Lab KAIST,</span>
             <span class="author-block"><sup>2</sup>URobotics Corp.</span>
           </div>
 
-          <div class="publication-links" style="margin-top:1rem;">
-            <span class="link-block">
-              <a href="https://arxiv.org/pdf/2506.14178" class="external-link button is-dark is-rounded is-small" target="_blank" rel="noopener">
-                <span class="icon"><i class="ai ai-arxiv"></i></span><span>&nbsp;arXiv</span>
-              </a>
-            </span>
-            <span class="link-block">
-              <a href="https://www.youtube.com/watch?v=rM65XoULht0" class="external-link button is-dark is-rounded is-small" target="_blank" rel="noopener">
-                <span class="icon"><i class="fab fa-youtube"></i></span><span>&nbsp;Video</span>
-              </a>
-            </span>
-          </div>
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+              <a href="https://arxiv.org/pdf/2506.14178" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=rM65XoULht0" 
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div> -->
 
+          </div>
         </div>
       </div>
-
-      <!-- Video -->
-      <div class="columns is-centered has-text-centered" style="margin-top:1.25rem;">
-        <div class="column is-four-fifths">
-          <div class="publication-video">
-            <iframe
-              src="https://www.youtube.com/embed/rM65XoULht0?si=cDSxFD7xyisl4KIW"
-              title="TACS-Graphs video"
-              frameborder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen>
-            </iframe>
-          </div>
-        </div>
-      </div>
-      <!-- /Video -->
     </div>
   </div>
 </section>
 
-<!-- ABSTRACT -->
 <section class="section">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths has-text-centered">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Scene graphs have emerged as a powerful tool for robots, providing a structured representation of spatial and semantic relationships for advanced task planning. Despite their potential, conventional 3D indoor scene graphs face critical limitations, particularly under- and over-segmentation of room layers in structurally complex environments. Under-segmentation misclassifies non-traversable areas as part of a room, often in open spaces, while over-segmentation fragments a single room into overlapping segments in complex environments. These issues stem from naive voxel-based map representations that rely solely on geometric proximity, disregarding the structural constraints of traversable spaces and resulting in inconsistent room layers within scene graphs. To the best of our knowledge, this work is the first to tackle segmentation inconsistency as a challenge and address it with Traversability-Aware Consistent Scene Graphs (TACS-Graphs), a novel framework that integrates ground robot traversability with room segmentation. By leveraging traversability as a key factor in defining room boundaries, the proposed method achieves a more semantically meaningful and topologically coherent segmentation, effectively mitigating the inaccuracies of voxel-based scene graph approaches in complex environments. Furthermore, the enhanced segmentation consistency improves loop closure detection efficiency in the proposed Consistent Scene Graph-leveraging Loop Closure Detection (CoSG-LCD) leading to higher pose estimation accuracy. Experimental results confirm that the proposed approach outperforms state-of-the-art methods in terms of scene graph consistency and pose graph optimization performance.
+            Scene graphs have emerged as a powerful tool for robots, providing a structured representation of spatial and semantic relationships for advanced task planning.
           </p>
-        </div>
-        <div class="content has-text-centered" style="margin-top:1rem;">
-            .abstract-img { max-width: 50%; height:auto; display:block; margin:1rem auto; }
-
-          <img src="./images/abstract.svg" alt="abstract figure" />
+          <p>Despite their potential, conventional 3D indoor scene graphs face critical limitations, particularly under- and over-segmentation of room layers in structurally complex environments. Under-segmentation misclassifies non-traversable areas as part of a room, often in open spaces, while over-segmentation fragments a single room into overlapping segments in complex environments. These issues stem from naive voxel-based map representations that rely solely on geometric proximity, disregarding the structural constraints of traversable spaces and resulting in inconsistent room layers within scene graphs.
+          </p>
+          <p>
+            To the best of our knowledge, this work is the first to tackle segmentation inconsistency as a challenge and address it with Traversability-Aware Consistent Scene Graphs (TACS-Graphs), a novel framework that integrates ground robot traversability with room segmentation.
+          </p>
+          <p>
+            By leveraging traversability as a key factor in defining room boundaries, the proposed method achieves a more semantically meaningful and topologically coherent segmentation, effectively mitigating the inaccuracies of voxel-based scene graph approaches in complex environments. Furthermore, the enhanced segmentation consistency improves loop closure detection efficiency in the proposed Consistent Scene Graph-leveraging Loop Closure Detection (CoSG-LCD) leading to higher pose estimation accuracy. Experimental results confirm that the proposed approach outperforms state-of-the-art methods in terms of scene graph consistency and pose graph optimization performance.
         </div>
       </div>
     </div>
+    <!--/ Abstract. -->
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe
+            src="https://www.youtube.com/embed/rM65XoULht0?si=cDSxFD7xyisl4KIW"
+            title="TACS-Graphs video"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
   </div>
 </section>
 
-<!-- BIBTEX -->
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            Special thanks to <a href="https://snt-arg.github.io/" target="_blank" rel="noopener">SNT-ARG</a> for open sourcing their code.
+          </p>
+          <p>
+            <a href="https://github.com/snt-arg/s_graphs_docker">S-Graphs+: Real-time Localization and Mapping leveraging Hierarchical Representations</a> is a baseline for our work.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">BibTeX</h2>
-<pre><code>@misc{kim2025tacsgraphstraversabilityawareconsistentscene,
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{kim2025tacsgraphstraversabilityawareconsistentscene,
   title         = {{TACS-Graphs}: Traversability-Aware Consistent Scene Graphs for Ground Robot Localization and Mapping},
   author        = {Jeewon Kim and Minho Oh and Hyun Myung},
   year          = {2025},
@@ -207,21 +240,32 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+
 <footer class="footer">
   <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
     <div class="columns is-centered">
       <div class="column is-8">
-        <div class="content has-text-centered">
+        <div class="content">
           <p>
-            This website is licensed under a
-            <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">
-              Creative Commons Attribution-ShareAlike 4.0 International License
-            </a>.
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
           </p>
           <p>
-            This project site is developed based on the template provided by
-            <a href="https://github.com/nerfies/nerfies.github.io" target="_blank" rel="noopener">Nerfies</a>.
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
           </p>
         </div>
       </div>
@@ -229,21 +273,5 @@
   </div>
 </footer>
 
-<script>
-  // Bulma burger menu
-  document.addEventListener('DOMContentLoaded', () => {
-    const $burger = document.querySelector('.navbar-burger');
-    const $menu = document.getElementById($burger?.dataset?.target || 'navMenu');
-    if ($burger && $menu) {
-      $burger.addEventListener('click', () => {
-        $burger.classList.toggle('is-active');
-        $menu.classList.toggle('is-active');
-      });
-    }
-  });
-</script>
-
-<!-- (선택) 프로젝트용 스크립트가 있으면 여기에 -->
-<script src="./static/js/index.js"></script>
 </body>
 </html>
